@@ -9,7 +9,7 @@ var Enemy = function(x, y) {
     this.x = x
     this.y = y
 };
-//asd
+
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
