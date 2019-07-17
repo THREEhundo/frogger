@@ -37,15 +37,23 @@ let Player = function() {
   this.y = 410
 }
 
+Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y)
 }
 
 Player.prototype.update = function(dt) {
   if(this.y < 10) {
     this.y = 410
+    this.x = 202
+  }
+  else if(this.y > 410) {
+    this.y = 410
   }
   if(this.x < 0) {
     this.x = 2
+  }
+  else if(this.x > 400) {
+    this.x = 400
   }
 }
 
