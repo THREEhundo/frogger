@@ -17,6 +17,7 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     this.x += 1
+    this.x * dt
     if(this.x > 500) {
       this.x = 0
     }
@@ -36,16 +37,18 @@ let Player = function() {
   this.y = 410
 }
 
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y)
+}
+
 Player.prototype.update = function(dt) {
   if(this.y < 10) {
     this.y = 410
-
+  }
+  if(this.x < 0) {
+    this.x = 2
   }
 }
 
-Player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y)
-}
 
 Player.prototype.handleInput = function(dt) {
     switch(dt) {
