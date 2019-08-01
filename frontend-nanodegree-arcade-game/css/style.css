@@ -1,5 +1,9 @@
 body {
     text-align: center;
-    font-size: 2em;
+    font-size: 1.5em;
     font-family: 'Notable'
+}
+#score, #lives, #title {
+  display: inline-block;
+  margin-bottom: 0;
 }

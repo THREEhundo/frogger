@@ -1,9 +1,14 @@
 let lives = 3
 let score = 0
-let gameOver = false
 document.getElementById('score').innerHTML = score
 document.getElementById('lives').innerHTML = lives
-document.getElementById('gameOver').innerHTML = gameOver
+
+let gameReset = function() {
+  lives = 3
+  score = 0
+  document.getElementById('score').innerHTML = score
+  document.getElementById('lives').innerHTML = lives
+}
 
 var Enemy = function Enemy(x, y, s) {
     this.sprite = 'images/enemy-bug.png';
@@ -28,6 +33,11 @@ Enemy.prototype.update = function(dt) {
     if (player.x > enemyLeftMax && player.x < enemyRightMax && player.y > enemyTopMax && player.y < enemyBottomMax) {
       player.resetPlayer()
       lives--
+      document.getElementById('lives').innerHTML = lives
+      if (lives == 0) {
+        window.alert(`Game Over`)
+        gameReset()
+      }
     }
 };
 
@@ -49,6 +59,11 @@ Player.prototype.update = function(dt) {
   if(this.y < 10) {
     player.resetPlayer()
     score += 10
+    document.getElementById('score').innerHTML = score
+    if (score == 50) {
+      window.alert(`Winner Winner Chicken Dinner!`)
+      gameReset()
+    }
   }
   else if(this.y > 410) {
     this.y = 410
